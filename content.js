@@ -70,7 +70,7 @@ async function addForkButton(owner, repo, username) {
     btn.onclick = () => {
       window.location.href = forkUrl;
     };
-    btn.innerHTML = `Go to My Fork`;
+    btn.innerHTML = `Go to Fork`;
   } else {
     btn.disabled = false;
     btn.onclick = () => {
