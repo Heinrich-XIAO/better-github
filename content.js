@@ -52,13 +52,7 @@ async function addForkButton(owner, repo, username) {
   btn.setAttribute("data-view-component", "true");
   btn.setAttribute("aria-haspopup", "menu");
   btn.setAttribute("role", "button");
-  btn.innerHTML = `
-    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo-forked mr-2">
-      <path d="M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 3.5 6.25v-.878a2.25 2.25 0 1 1 1.5 0ZM5 3.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Zm6.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM8 12.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z"></path>
-    </svg>
-    Loading...
-    <span class="dropdown-caret"></span>
-  `;
+  btn.innerHTML = `Loading...`;
 
   if (actionsContainer) {
     const li = document.createElement("li");
@@ -76,23 +70,13 @@ async function addForkButton(owner, repo, username) {
     btn.onclick = () => {
       window.location.href = forkUrl;
     };
-    btn.innerHTML = `
-      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo-forked mr-2">
-        <path d="M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 3.5 6.25v-.878a2.25 2.25 0 1 1 1.5 0ZM5 3.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Zm6.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM8 12.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z"></path>
-      </svg>
-      Go to My Fork
-    `;
+    btn.innerHTML = `Go to My Fork`;
   } else {
     btn.disabled = false;
     btn.onclick = () => {
       window.location.href = `/${owner}/${repo}/fork`;
     };
-    btn.innerHTML = `
-      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo-forked mr-2">
-        <path d="M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 3.5 6.25v-.878a2.25 2.25 0 1 1 1.5 0ZM5 3.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Zm6.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM8 12.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z"></path>
-      </svg>
-      Fork This Repo
-    `;
+    btn.innerHTML = `Fork This Repo`;
   }
 }
 
