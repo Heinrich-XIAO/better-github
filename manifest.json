@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Better GitHub - Go to Fork",
+  "name": "Better GitHub",
   "version": "1.0.0",
   "description": "Adds a button to navigate to your fork of a repository",
   "permissions": ["storage"],

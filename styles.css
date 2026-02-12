@@ -1,45 +1,8 @@
-.better-github-fork-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 5px 12px;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 20px;
-  min-height: 28px;
-  color: #24292f;
-  background-color: #f6f8fa;
-  border: 1px solid rgba(27, 31, 36, 0.15);
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.2s;
+#better-github-fork-btn {
   margin-right: 8px;
-  position: relative;
 }
 
-.better-github-fork-btn:hover:not(:disabled) {
-  background-color: #f3f4f6;
-}
-
-.better-github-fork-btn:disabled {
+#better-github-fork-btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
-}
-
-.better-github-btn-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-}
-
-.better-github-btn-visual {
-  display: inline-flex;
-  align-items: center;
-}
-
-.better-github-btn-text {
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 20px;
 }
