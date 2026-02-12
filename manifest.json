@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Better GitHub - Go to Fork",
+  "version": "1.0.0",
+  "description": "Adds a button to navigate to your fork of a repository",
+  "permissions": ["storage"],
+  "host_permissions": ["https://github.com/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://github.com/*"],
+      "js": ["content.js"],
+      "css": ["styles.css"]
+    }
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  }
+}

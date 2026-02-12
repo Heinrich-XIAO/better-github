@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Better GitHub Settings</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      padding: 20px;
+      max-width: 400px;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    input {
+      width: 100%;
+      padding: 8px 12px;
+      font-size: 14px;
+      border: 1px solid #d0d7de;
+      border-radius: 6px;
+      margin-bottom: 12px;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #1f883d;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    button:hover {
+      background-color: #1a7f37;
+    }
+    .saved {
+      color: #1a7f37;
+      margin-left: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h3>GitHub Username</h3>
+  <label for="username">Your GitHub username:</label>
+  <input type="text" id="username" placeholder="e.g., octocat">
+  <button id="save">Save</button>
+  <span id="status" class="saved" style="display:none;">Saved!</span>
+  <script src="options.js"></script>
+</body>
+</html>
