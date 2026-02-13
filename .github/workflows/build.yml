@@ -54,7 +54,7 @@ jobs:
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         id: version
         run: |
-          VERSION=$(cat manifest.config.js | grep "version:" | sed 's/.*version: *["'\'']*\([^"'\'']*\).*/\1/')
+          VERSION=$(grep "version:" manifest.config.js | head -1 | sed "s/.*version: *['\"]//;s/['\"].*//")
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
       - name: Create release
