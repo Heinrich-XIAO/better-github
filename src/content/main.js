@@ -4,7 +4,10 @@ import './styles.css'
   const username = await getUsername();
   if (!username) return;
 
-  if (window.location.pathname === "/" || window.location.pathname === "") {
+  const isHomePage = window.location.pathname === "/" || 
+                      window.location.pathname === "" || 
+                      window.location.pathname === "/dashboard";
+  if (isHomePage) {
     replaceCopilotWithRecentRepos();
     fetchAndStoreRecentRepos(username);
   }
@@ -160,7 +163,10 @@ new MutationObserver(() => {
       const username = await getUsername();
       if (!username) return;
 
-      if (window.location.pathname === "/" || window.location.pathname === "") {
+      const isHomePage = window.location.pathname === "/" || 
+                          window.location.pathname === "" || 
+                          window.location.pathname === "/dashboard";
+      if (isHomePage) {
         replaceCopilotWithRecentRepos();
         fetchAndStoreRecentRepos(username);
       }
