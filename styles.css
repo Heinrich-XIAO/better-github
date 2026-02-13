@@ -6,3 +6,41 @@
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+.better-github-recent-repos {
+  padding: 16px;
+  border: 1px solid var(--borderColor-default, #30363d);
+  border-radius: 6px;
+  background: var(--bgColor-default, #0d1117);
+}
+
+.better-github-repos-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--fgColor-default, #e6edf3);
+}
+
+.better-github-repos-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.better-github-repos-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--borderColor-muted, #21262d);
+}
+
+.better-github-repos-list li:last-child {
+  border-bottom: none;
+}
+
+.better-github-repos-list a {
+  color: var(--fgColor-accent, #58a6ff);
+  text-decoration: none;
+}
+
+.better-github-repos-list a:hover {
+  text-decoration: underline;
+}

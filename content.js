@@ -2,6 +2,11 @@
   const username = await getUsername();
   if (!username) return;
 
+  if (window.location.pathname === "/" || window.location.pathname === "") {
+    replaceCopilotWithRecentRepos();
+    fetchAndStoreRecentRepos(username);
+  }
+
   const repoMatch = window.location.pathname.match(/^\/([^/]+)\/([^/]+)(?:\/|$)/);
   if (!repoMatch) return;
 
@@ -80,6 +85,70 @@ async function addForkButton(owner, repo, username) {
   }
 }
 
+async function fetchAndStoreRecentRepos(username) {
+  try {
+    const response = await fetch(`https://github.com/${username}?tab=repositories`);
+    const html = await response.text();
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, "text/html");
+    
+    const repoLinks = doc.querySelectorAll('a[itemprop="name codeRepository"]');
+    const repos = [];
+    
+    repoLinks.forEach((link, index) => {
+      if (index >= 5) return;
+      const repoPath = link.getAttribute('href');
+      const repoName = link.textContent.trim();
+      repos.push({ name: repoName, path: repoPath });
+    });
+    
+    if (repos.length > 0) {
+      chrome.storage.local.set({ 'better-github-recent-repos': repos });
+    }
+  } catch (e) {
+    console.error('Failed to fetch recent repos:', e);
+  }
+}
+
+function replaceCopilotWithRecentRepos() {
+  const observer = new MutationObserver((mutations, obs) => {
+    const copilotContainers = document.querySelectorAll('[class*="CopilotChatInputPartial-module__inputContainer"]');
+    
+    if (copilotContainers.length > 0) {
+      obs.disconnect();
+      
+      copilotContainers.forEach(container => {
+        if (container.dataset.betterGithubReplaced) return;
+        container.dataset.betterGithubReplaced = 'true';
+        
+        chrome.storage.local.get(['better-github-recent-repos'], (result) => {
+          const repos = result['better-github-recent-repos'] || [];
+          if (repos.length === 0) return;
+          
+          const list = document.createElement('div');
+          list.className = 'better-github-recent-repos';
+          list.innerHTML = `
+            <h3 class="better-github-repos-title">Recent Repositories</h3>
+            <ul class="better-github-repos-list">
+              ${repos.map(repo => `
+                <li>
+                  <a href="${repo.path}">${repo.name}</a>
+                </li>
+              `).join('')}
+            </ul>
+          `;
+          
+          container.replaceWith(list);
+        });
+      });
+    }
+  });
+  
+  observer.observe(document.body, { childList: true, subtree: true });
+  
+  setTimeout(() => observer.disconnect(), 10000);
+}
+
 let lastUrl = location.href;
 new MutationObserver(() => {
   const url = location.href;
@@ -88,6 +157,11 @@ new MutationObserver(() => {
     (async function () {
       const username = await getUsername();
       if (!username) return;
+
+      if (window.location.pathname === "/" || window.location.pathname === "") {
+        replaceCopilotWithRecentRepos();
+        fetchAndStoreRecentRepos(username);
+      }
 
       const repoMatch = window.location.pathname.match(/^\/([^/]+)\/([^/]+)(?:\/|$)/);
       if (!repoMatch) return;
