@@ -5,6 +5,9 @@ export default defineManifest({
   name: 'Better GitHub',
   version: '1.0.0',
   description: 'Adds a button to navigate to your fork of a repository',
+  icons: {
+    128: 'public/logo.svg',
+  },
   permissions: ['storage'],
   host_permissions: ['https://github.com/*'],
   content_scripts: [
