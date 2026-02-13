@@ -1,3 +1,5 @@
+import './styles.css'
+
 (async function () {
   const username = await getUsername();
   if (!username) return;
