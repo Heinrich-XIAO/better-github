@@ -6,7 +6,10 @@ export default defineManifest({
   version: '1.0.0',
   description: 'Adds a button to navigate to your fork of a repository',
   icons: {
-    128: 'public/logo.svg',
+    16: 'public/logo-16.png',
+    32: 'public/logo-32.png',
+    48: 'public/logo-48.png',
+    128: 'public/logo-128.png',
   },
   permissions: ['storage'],
   host_permissions: ['https://github.com/*'],
