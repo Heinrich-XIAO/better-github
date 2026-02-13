@@ -27,18 +27,6 @@ Replaces the Copilot chat input on your GitHub dashboard with a list of your 5 m
 5. Enable "Developer mode" in the top right
 6. Click "Load unpacked" and select the `dist/` folder
 
-## Configuration
-
-### Setting Your Username
-
-The extension automatically detects your GitHub username, but you can also set it manually:
-
-1. Click the extension icon in Chrome
-2. Enter your GitHub username
-3. Click "Save"
-
-Your username is stored locally in `localStorage` and is only used to check if you've forked repositories.
-
 ## Privacy
 
 Better GitHub respects your privacy:
@@ -70,6 +58,3 @@ bun run dev
 bun run build
 ```
 
-## License
-
-MIT
